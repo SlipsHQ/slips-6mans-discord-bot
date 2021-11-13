@@ -355,10 +355,10 @@ ${playerMenu}`);
 						// save their elo change
 						if(didPlayerWin) {
 							newElo = elo.ifWins(foundParticipant.elo, averageParticipantElo);
-							foundParticipant.player.credits += 10000;
+							foundParticipant.player.credits += 25000;
 						} else {
 							newElo = elo.ifLoses(foundParticipant.elo, averageParticipantElo);
-							foundParticipant.player.credits += 5000;
+							foundParticipant.player.credits += 10000;
 						}
 
 						await models.QueueEloChange.build({
