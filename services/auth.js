@@ -1,5 +1,6 @@
 const path = require("path") 
 const models  = require(path.join(process.cwd(), 'db', 'models')); 
+const config = require(path.join(process.cwd(), 'config', 'config.json'));
 const Op = models.Sequelize.Op;
 const moment = require('moment');
 const axios = require("axios");
@@ -38,7 +39,7 @@ module.exports = exports = {
 
   	async getPlayerRankDetailsFromTracker(platform, gamerId) {
   		return await new Promise(async function(resolve, reject) {
-			const res = await axios.get(`https://api.tracker.gg/api/v2/rocket-league/standard/profile/${platform}/${gamerId}/segments/playlist?season=18`);
+			const res = await axios.get(`${config.proxy_path}https://api.tracker.gg/api/v2/rocket-league/standard/profile/${platform}/${encodeURI(gamerId)}/segments/playlist?season=21`);
 		    const results  = res.data;
 
 		    console.log(results);

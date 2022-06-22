@@ -43,7 +43,9 @@ It should look like \`https://rocketleague.tracker.network/rocket-league/profile
 						throw "tracker_url_error";
 					}
 
-					let pattern = /(?<!\?.+)(?<=\/)[\w-]+(?=[/\r\n?]|$)/g
+					answers.tracker_url = decodeURI(answers.tracker_url);
+
+					let pattern = /(?<!\?.+)(?<=\/)[\w- ]+(?=[/\r\n?]|$)/g
 					let results = answers.tracker_url.match(pattern);
 
 					if(results.length !== 5) {
@@ -55,12 +57,8 @@ It should look like \`https://rocketleague.tracker.network/rocket-league/profile
 
 				})
 				.catch(collected => {
-					if(collected === error) {
-						throw "error";
-					} else {
-						message.channel.send('Sorry, you did not respond in time! :cry:');
-						return;
-					}
+					message.channel.send('Sorry, you did not respond in time! :cry:');
+					return;
 				});
 
 			const filter = (reaction, user) => {

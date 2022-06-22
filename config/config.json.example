@@ -1,5 +1,6 @@
 {
 	"discord_token": "",
 	"discord_token_staging": "",
-    "env": "staging"
+    "env": "staging",
+    "proxy_path": ""
 }
