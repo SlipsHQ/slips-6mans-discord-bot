@@ -45,15 +45,16 @@ It should look like \`https://rocketleague.tracker.network/rocket-league/profile
 
 					answers.tracker_url = decodeURI(answers.tracker_url);
 
-					let pattern = /(?<!\?.+)(?<=\/)[\w- ]+(?=[/\r\n?]|$)/g
+					let pattern = /(?<!\?.+)(?<=\/)[\w- .]+(?=[/\r\n?]|$)/g
 					let results = answers.tracker_url.match(pattern);
 
-					if(results.length !== 5) {
+					if(results.length !== 6) {
 						throw "tracker_url_error";
 					}
 
-					answers.platform = results[2];
-					answers.gamer_id = results[3];
+
+					answers.platform = results[3];
+					answers.gamer_id = results[4];
 
 				})
 				.catch(collected => {
